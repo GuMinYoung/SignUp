@@ -13,6 +13,7 @@
 		8E453F2C23169C860082329C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E453F2B23169C860082329C /* Assets.xcassets */; };
 		8E453F2E2316AD750082329C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E453F2D2316AD750082329C /* LoginViewController.swift */; };
 		8E453F302316C3A10082329C /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E453F2F2316C3A10082329C /* BasicInfoViewController.swift */; };
+		8E453F322316CEC30082329C /* AdditionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E453F312316CEC30082329C /* AdditionalInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8E453F2B23169C860082329C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E453F2D2316AD750082329C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8E453F2F2316C3A10082329C /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
+		8E453F312316CEC30082329C /* AdditionalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				8E453F2523169A3B0082329C /* Info.plist */,
 				8E453F2B23169C860082329C /* Assets.xcassets */,
 				8E453F2D2316AD750082329C /* LoginViewController.swift */,
+				8E453F312316CEC30082329C /* AdditionalInfoViewController.swift */,
 			);
 			path = 02SignUp;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E453F2E2316AD750082329C /* LoginViewController.swift in Sources */,
+				8E453F322316CEC30082329C /* AdditionalInfoViewController.swift in Sources */,
 				8E453F302316C3A10082329C /* BasicInfoViewController.swift in Sources */,
 				8E453F1A23169A3B0082329C /* AppDelegate.swift in Sources */,
 			);
