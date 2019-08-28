@@ -10,19 +10,73 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="_2SignUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="_2SignUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qJu-Gd-AAa">
+                                <rect key="frame" x="107.5" y="344.5" width="199" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qEs-Dz-kY6">
+                                <rect key="frame" x="107.5" y="384.5" width="199" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wdz-JV-UY2" userLabel="Buttons">
+                                <rect key="frame" x="83" y="429.5" width="248" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUf-Td-Y4I">
+                                        <rect key="frame" x="0.0" y="0.0" width="124" height="30"/>
+                                        <state key="normal" title="Sign In"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnY-qK-g3M">
+                                        <rect key="frame" x="124" y="0.0" width="124" height="30"/>
+                                        <state key="normal" title="Sign Up">
+                                            <color key="titleColor" red="0.86940204098745044" green="0.24415611232050713" blue="0.14615488950550812" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Penguin" translatesAutoresizingMaskIntoConstraints="NO" id="yhn-FC-WFa">
+                                <rect key="frame" x="124" y="144" width="166" height="165.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yhn-FC-WFa" secondAttribute="height" multiplier="1:1" id="nrQ-TS-6Ox"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qJu-Gd-AAa" firstAttribute="top" secondItem="yhn-FC-WFa" secondAttribute="bottom" constant="35" id="1Rf-rm-baj"/>
+                            <constraint firstItem="qEs-Dz-kY6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="58z-Hj-TnE"/>
+                            <constraint firstItem="Wdz-JV-UY2" firstAttribute="top" secondItem="qEs-Dz-kY6" secondAttribute="bottom" constant="15" id="9Op-M1-tzy"/>
+                            <constraint firstItem="qJu-Gd-AAa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BgC-ar-jAV"/>
+                            <constraint firstItem="yhn-FC-WFa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="D85-jo-YSh"/>
+                            <constraint firstItem="qEs-Dz-kY6" firstAttribute="top" secondItem="qJu-Gd-AAa" secondAttribute="bottom" constant="10" id="GzB-rY-U4G"/>
+                            <constraint firstItem="qJu-Gd-AAa" firstAttribute="width" secondItem="yhn-FC-WFa" secondAttribute="width" multiplier="1.2" id="V2L-pz-6pf"/>
+                            <constraint firstItem="yhn-FC-WFa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vpb-Dq-IiK"/>
+                            <constraint firstItem="yhn-FC-WFa" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.4" id="Wtu-TV-Mac"/>
+                            <constraint firstItem="Wdz-JV-UY2" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="dbh-o0-JUz"/>
+                            <constraint firstItem="qEs-Dz-kY6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qK9-Xx-fLs"/>
+                            <constraint firstItem="qEs-Dz-kY6" firstAttribute="width" secondItem="qJu-Gd-AAa" secondAttribute="width" id="rpj-NT-6rt"/>
+                            <constraint firstItem="Wdz-JV-UY2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ucW-Ji-rmW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-313" y="72"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Penguin" width="1067" height="1067"/>
+    </resources>
 </document>
