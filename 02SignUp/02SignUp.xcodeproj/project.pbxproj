@@ -14,6 +14,7 @@
 		8E453F2E2316AD750082329C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E453F2D2316AD750082329C /* LoginViewController.swift */; };
 		8E453F302316C3A10082329C /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E453F2F2316C3A10082329C /* BasicInfoViewController.swift */; };
 		8E453F322316CEC30082329C /* AdditionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E453F312316CEC30082329C /* AdditionalInfoViewController.swift */; };
+		8E63759B231839820078FFBD /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63759A231839820078FFBD /* UserInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8E453F2D2316AD750082329C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8E453F2F2316C3A10082329C /* BasicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
 		8E453F312316CEC30082329C /* AdditionalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoViewController.swift; sourceTree = "<group>"; };
+		8E63759A231839820078FFBD /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				8E453F2B23169C860082329C /* Assets.xcassets */,
 				8E453F2D2316AD750082329C /* LoginViewController.swift */,
 				8E453F312316CEC30082329C /* AdditionalInfoViewController.swift */,
+				8E63759A231839820078FFBD /* UserInformation.swift */,
 			);
 			path = 02SignUp;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				8E453F2E2316AD750082329C /* LoginViewController.swift in Sources */,
 				8E453F322316CEC30082329C /* AdditionalInfoViewController.swift in Sources */,
 				8E453F302316C3A10082329C /* BasicInfoViewController.swift in Sources */,
+				8E63759B231839820078FFBD /* UserInformation.swift in Sources */,
 				8E453F1A23169A3B0082329C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,22 +9,25 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    // MARK:- IBOutlets
+    @IBOutlet weak var identifierField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
 
+    
+    // MARK:- Methods
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: IBActions
+    @IBAction func touchUpSignInButton(_ sender: UIButton) {
+        UserInformation.shared.identifier = identifierField.text
+        UserInformation.shared.password = passwordField.text
     }
-    */
-
+    
+    @IBAction func touchUpSignUpButton(_ sender: UIButton) {
+        guard let BasicInfoView = self.storyboard?.instantiateViewController(withIdentifier: "BasicInfoView") else { return }
+        self.present(BasicInfoView, animated: true, completion: nil)
+    }
 }
