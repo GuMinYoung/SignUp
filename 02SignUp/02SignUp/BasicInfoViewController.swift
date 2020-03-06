@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class BasicInfoViewController: UIViewController {
     // MARK:- Properties
@@ -14,15 +15,26 @@ class BasicInfoViewController: UIViewController {
 
     
     // MARK:- IBOutlets
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var profileImageView: UIImageView?
+    @IBOutlet weak var cancelButton: UIButton?
+    @IBOutlet weak var doneButton: UIButton?
+    @IBOutlet weak var idField: UITextField?
+    @IBOutlet weak var passwordField: UITextField?
+    @IBOutlet weak var checkPasswordField: UITextField?
+    @IBOutlet weak var introductionView: UITextView?
     
     
     // MARK:- Methods
     // MARK: Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeGestureRecognizer()
-        // Do any additional setup after loading the view.
+        initGestureRecognizer()
+        initDelegates()
+        addTargets()
     }
     
     // MARK: Action Method
@@ -30,23 +42,86 @@ class BasicInfoViewController: UIViewController {
         openLibrary()
     }
     
+    @objc func touchUpCancelButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func touchUpDoneButton(_ sender: UIButton) {
+        guard let profileImage = profileImageView?.image,
+            let id = idField?.text,
+            let password = passwordField?.text,
+            let introduction = introductionView?.text else {return}
+        
+        UserInformation.shared.profileImage = profileImage
+        UserInformation.shared.id = id
+        UserInformation.shared.password = password
+        UserInformation.shared.introduction = introduction
+        
+        guard let nextVC = storyboard?.instantiateViewController(withIdentifier: "AdditionalInfoView") else {return}
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc func editingDidEnd(_ sender: UITextField) {
+        doneButton?.isEnabled = checkUserInfo()
+    }
+    
     // MARK: Custom Method
-    func initializeGestureRecognizer() {
+    func initDelegates() {
+        imagePicker.delegate = self
+        introductionView?.delegate = self
+    }
+    
+    func initGestureRecognizer() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapImageView(gestureRecognizer:)))
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapRecognizer)
+        profileImageView?.isUserInteractionEnabled = true
+        profileImageView?.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func addTargets() {
+        doneButton?.addTarget(self, action: #selector(touchUpDoneButton), for: .touchUpInside)
+        cancelButton?.addTarget(self, action: #selector(touchUpCancelButton), for: .touchUpInside)
+        idField?.addTarget(self, action: #selector(editingDidEnd), for: .editingChanged)
+        passwordField?.addTarget(self, action: #selector(editingDidEnd), for: .editingChanged)
+        checkPasswordField?.addTarget(self, action: #selector(editingDidEnd), for: .editingChanged)
+    }
+    
+    func checkUserInfo() -> Bool {
+        guard profileImageView?.image != nil,
+            idField?.text != "",
+            passwordField?.text != "",
+            checkPasswordField?.text != "",
+            introductionView?.text != "",
+            passwordField?.text == checkPasswordField?.text
+            else {return false}
+        
+        return true
     }
 }
 
 // MARK: UIImagePickerControllerDelegate, UINavigationControllerDelegate
-extension BasicInfoViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func initializePicker() {
-        imagePicker.delegate = self
-        
-    }
-    
+extension BasicInfoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func openLibrary() {
         imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+
+        profileImageView?.image = editedImage
+        self.dismiss(animated: true, completion: nil)
+        
+        doneButton?.isEnabled = checkUserInfo()
+    }
+}
+
+extension BasicInfoViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        doneButton?.isEnabled = checkUserInfo()
     }
 }

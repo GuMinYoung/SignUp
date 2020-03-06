@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class UserInformation {
-    static let shared : UserInformation = UserInformation()
-    var identifier : String?
-    var password : String?
-    var introduction : String?
-    var phoneNumber : String?
-    var birthDate : String?
+    static let shared: UserInformation = UserInformation()
+    var id: String?
+    var password: String?
+    var profileImage: UIImage?
+    var introduction: String?
+    var phoneNumber: String?
+    var birthDate: String?
 }
