@@ -15,6 +15,7 @@ class AdditionalInfoViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton?
     @IBOutlet weak var birthLabel: UILabel?
     @IBOutlet weak var datePicker: UIDatePicker?
+    @IBOutlet weak var phoneNumberField: UITextField?
     
     // MARK:- Methods
     // MARK: Life Cycle
@@ -25,7 +26,13 @@ class AdditionalInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addTargets()
+        addTargets()
+        initFieldKeyboardType()
+    }
+    
+    // MARK: Overrided Method
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+          self.view.endEditing(true)
     }
     
     // MARK: Custom Method
@@ -36,7 +43,12 @@ class AdditionalInfoViewController: UIViewController {
         datePicker?.addTarget(self, action: #selector(pickerValueChanged), for: .valueChanged)
     }
     
+    func initFieldKeyboardType() {
+        phoneNumberField?.keyboardType = .numberPad
+    }
+    
     // MARK: Action Method
+    
     @objc func pickerValueChanged(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
@@ -52,11 +64,13 @@ class AdditionalInfoViewController: UIViewController {
     @objc func touchUpBackButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
         // 데이터 유지
+        // UserInformation에 저장
     }
     
     @objc func touchUpSignUpButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
         // 다음 뷰에서 텍스트필드에 ID 표시
+        // UserInformation에 저장
     }
 }
 
