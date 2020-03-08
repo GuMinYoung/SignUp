@@ -268,6 +268,13 @@
                         <viewLayoutGuide key="safeArea" id="J3h-k8-KVb"/>
                     </view>
                     <navigationItem key="navigationItem" id="j0f-yp-u4o"/>
+                    <connections>
+                        <outlet property="backButton" destination="DNk-21-Oa7" id="FCN-m1-s8z"/>
+                        <outlet property="birthLabel" destination="4Ne-rH-CTU" id="iAs-rT-nzV"/>
+                        <outlet property="cancelButton" destination="kAt-FL-H1m" id="TVd-cf-pPV"/>
+                        <outlet property="datePicker" destination="iod-Zd-hly" id="RXF-eD-VBu"/>
+                        <outlet property="signUpButton" destination="YTJ-cj-Cqp" id="9On-vm-5KG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4N-pe-qnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
