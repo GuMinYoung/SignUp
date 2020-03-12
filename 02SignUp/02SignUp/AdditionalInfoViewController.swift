@@ -17,11 +17,17 @@ class AdditionalInfoViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker?
     @IBOutlet weak var phoneNumberField: UITextField?
     
+    var isValidDate: Bool = false
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        return dateFormatter
+    }()
+    
     // MARK:- Methods
     // MARK: Life Cycle
     override func viewWillAppear(_ animated: Bool) {
-        guard let datePicker = datePicker else {return}
-        self.pickerValueChanged(datePicker)
+        initBirthLabelText()
     }
     
     override func viewDidLoad() {
@@ -41,19 +47,30 @@ class AdditionalInfoViewController: UIViewController {
         backButton?.addTarget(self, action: #selector(touchUpBackButton), for: .touchUpInside)
         signUpButton?.addTarget(self, action: #selector(touchUpSignUpButton), for: .touchUpInside)
         datePicker?.addTarget(self, action: #selector(pickerValueChanged), for: .valueChanged)
+        phoneNumberField?.addTarget(self, action: #selector(editingDidChanged), for: .editingChanged)
     }
     
     func initFieldKeyboardType() {
         phoneNumberField?.keyboardType = .numberPad
     }
     
-    // MARK: Action Method
-    
-    @objc func pickerValueChanged(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
+    func initBirthLabelText() {
         guard let displayedDate = datePicker?.date else {return}
         birthLabel?.text = dateFormatter.string(from: displayedDate)
+    }
+    
+    func checkUserInfo() -> Bool {
+        guard phoneNumberField?.text != "", isValidDate
+            else {return false}
+        
+        return true
+    }
+    
+    // MARK: Action Method
+    @objc func pickerValueChanged(_ sender: UIDatePicker) {
+        initBirthLabelText()
+        isValidDate = true
+        signUpButton?.isEnabled = checkUserInfo()
     }
     
     @objc func touchUpCancelButton(_ sender: UIButton) {
@@ -71,6 +88,10 @@ class AdditionalInfoViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         // 다음 뷰에서 텍스트필드에 ID 표시
         // UserInformation에 저장
+    }
+    
+    @objc func editingDidChanged(_ sender: UITextField) {
+        signUpButton?.isEnabled = checkUserInfo()
     }
 }
 
