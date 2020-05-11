@@ -25,10 +25,6 @@ class LoginViewController: UIViewController {
         addTarget()
     }
     
-    func addTarget() {
-        signUpButton?.addTarget(self, action: #selector(touchUpSignUpButton), for: .touchUpInside)
-    }
-    
     // MARK: Action Method
     @objc func touchUpSignUpButton(_ sender: UIButton) {
         UserInformation.shared.reset()
@@ -37,5 +33,15 @@ class LoginViewController: UIViewController {
         navigationVC.modalPresentationStyle = .fullScreen
         
         self.present(navigationVC, animated: true, completion: nil)
+    }
+    
+    // MARK: Override Method
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // MARK: Custom Method
+    func addTarget() {
+        signUpButton?.addTarget(self, action: #selector(touchUpSignUpButton), for: .touchUpInside)
     }
 }
