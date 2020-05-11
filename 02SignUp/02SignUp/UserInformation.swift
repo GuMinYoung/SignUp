@@ -9,12 +9,29 @@
 import Foundation
 import UIKit
 
-class UserInformation {
+final class UserInformation {
     static let shared: UserInformation = UserInformation()
     var id: String?
     var password: String?
     var profileImage: UIImage?
     var introduction: String?
     var phoneNumber: String?
-    var birthDate: String?
+    var birthDate: Date?
+    var isEmpty = true
+    
+    func reset() {
+        id = nil
+        password = nil
+        profileImage = nil
+        introduction = nil
+        phoneNumber = nil
+        birthDate = nil
+        isEmpty = true
+    }
+}
+
+extension UserInformation {
+    func nilCheck() {
+        
+    }
 }

@@ -23,7 +23,6 @@ class BasicInfoViewController: UIViewController {
     @IBOutlet weak var checkPasswordField: UITextField?
     @IBOutlet weak var introductionView: UITextView?
     
-    
     // MARK:- Methods
     // MARK: Life Cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +42,9 @@ class BasicInfoViewController: UIViewController {
     }
     
     @objc func touchUpCancelButton(_ sender: UIButton) {
+
         self.dismiss(animated: true, completion: nil)
+        UserInformation.shared.reset()
     }
     
     @objc func touchUpDoneButton(_ sender: UIButton) {
@@ -58,6 +59,7 @@ class BasicInfoViewController: UIViewController {
         UserInformation.shared.introduction = introduction
         
         guard let nextVC = storyboard?.instantiateViewController(withIdentifier: "AdditionalInfoView") else {return}
+        
         navigationController?.pushViewController(nextVC, animated: true)
     }
     

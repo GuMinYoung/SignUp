@@ -12,23 +12,30 @@ class LoginViewController: UIViewController {
     // MARK:- IBOutlets
     @IBOutlet weak var identifierField: UITextField?
     @IBOutlet weak var passwordField: UITextField?
+    @IBOutlet weak var signUpButton: UIButton?
     
     // MARK:- Methods
     // MARK: Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        identifierField?.text = UserInformation.shared.id
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTarget()
+    }
+    
+    func addTarget() {
+        signUpButton?.addTarget(self, action: #selector(touchUpSignUpButton), for: .touchUpInside)
     }
     
     // MARK: IBActions
-    @IBAction func touchUpSignInButton(_ sender: UIButton) {
-        guard let id = identifierField?.text, let password = passwordField?.text else {return}
-        UserInformation.shared.id = id
-        UserInformation.shared.password = password
-    }
-    
-    @IBAction func touchUpSignUpButton(_ sender: UIButton) {
-        guard let basicInfoView = self.storyboard?.instantiateViewController(withIdentifier: "SignUpNavigation") else { return }
-        basicInfoView.modalPresentationStyle = .fullScreen
-        self.present(basicInfoView, animated: true, completion: nil)
+    @objc func touchUpSignUpButton(_ sender: UIButton) {
+        UserInformation.shared.reset()
+        
+        guard let navigationVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpNavigation") else { return }
+        navigationVC.modalPresentationStyle = .fullScreen
+        
+        self.present(navigationVC, animated: true, completion: nil)
     }
 }

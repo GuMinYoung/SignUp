@@ -27,11 +27,14 @@ class AdditionalInfoViewController: UIViewController {
     // MARK:- Methods
     // MARK: Life Cycle
     override func viewWillAppear(_ animated: Bool) {
-        initBirthLabelText()
+        initBirthDate()
+        initPhoneNumber()
+        // UserInformation에 저장된 데이터가 있으면 가져와서 채움
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addTargets()
         initFieldKeyboardType()
     }
@@ -54,45 +57,56 @@ class AdditionalInfoViewController: UIViewController {
         phoneNumberField?.keyboardType = .numberPad
     }
     
-    func initBirthLabelText() {
-        guard let displayedDate = datePicker?.date else {return}
-        birthLabel?.text = dateFormatter.string(from: displayedDate)
+    func initPhoneNumber() {
+        guard let phoneNumber = UserInformation.shared.phoneNumber else {
+            phoneNumberField?.text = ""
+            return
+        }
+        phoneNumberField?.text = phoneNumber
+    }
+    
+    func initBirthDate() {
+        guard let birthDate = UserInformation.shared.birthDate else {
+            guard let today = datePicker?.date else {return}
+            birthLabel?.text = dateFormatter.string(from: today)
+            return
+        }
+        datePicker?.date = birthDate
+        birthLabel?.text = dateFormatter.string(from: birthDate)
     }
     
     func checkUserInfo() -> Bool {
         guard phoneNumberField?.text != "", isValidDate
             else {return false}
-        
         return true
     }
     
     // MARK: Action Method
     @objc func pickerValueChanged(_ sender: UIDatePicker) {
-        initBirthLabelText()
+        //initBirthDate()
+        birthLabel?.text = dateFormatter.string(from: sender.date)
         isValidDate = true
         signUpButton?.isEnabled = checkUserInfo()
     }
     
     @objc func touchUpCancelButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-        // 데이터 초기화
+        UserInformation.shared.reset()
     }
 
     @objc func touchUpBackButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
-        // 데이터 유지
-        // UserInformation에 저장
+        UserInformation.shared.phoneNumber = phoneNumberField?.text
+        UserInformation.shared.birthDate = datePicker?.date
     }
     
     @objc func touchUpSignUpButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-        // 다음 뷰에서 텍스트필드에 ID 표시
-        // UserInformation에 저장
+        UserInformation.shared.phoneNumber = phoneNumberField?.text
+        UserInformation.shared.birthDate = datePicker?.date
     }
     
     @objc func editingDidChanged(_ sender: UITextField) {
         signUpButton?.isEnabled = checkUserInfo()
     }
 }
-
-
