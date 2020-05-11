@@ -33,6 +33,7 @@ class BasicInfoViewController: UIViewController {
         super.viewDidLoad()
         initGestureRecognizer()
         initDelegates()
+        initPasswordFields()
         addTargets()
     }
     
@@ -81,6 +82,11 @@ class BasicInfoViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapImageView(gestureRecognizer:)))
         profileImageView?.isUserInteractionEnabled = true
         profileImageView?.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func initPasswordFields() {
+        passwordField?.isSecureTextEntry = true
+        checkPasswordField?.isSecureTextEntry = true
     }
     
     func addTargets() {
