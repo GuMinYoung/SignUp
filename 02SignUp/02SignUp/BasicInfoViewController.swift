@@ -58,9 +58,9 @@ class BasicInfoViewController: UIViewController {
         UserInformation.shared.password = password
         UserInformation.shared.introduction = introduction
         
-        guard let nextVC = storyboard?.instantiateViewController(withIdentifier: "AdditionalInfoView") else {return}
+        guard let AdditionalInfoVC = storyboard?.instantiateViewController(withIdentifier: "AdditionalInfoVC") else {return}
         
-        navigationController?.pushViewController(nextVC, animated: true)
+        navigationController?.pushViewController(AdditionalInfoVC, animated: true)
     }
     
     @objc func editingDidEnd(_ sender: UITextField) {

@@ -17,7 +17,6 @@ final class UserInformation {
     var introduction: String?
     var phoneNumber: String?
     var birthDate: Date?
-    var isEmpty = true
     
     func reset() {
         id = nil
@@ -26,12 +25,5 @@ final class UserInformation {
         introduction = nil
         phoneNumber = nil
         birthDate = nil
-        isEmpty = true
-    }
-}
-
-extension UserInformation {
-    func nilCheck() {
-        
     }
 }

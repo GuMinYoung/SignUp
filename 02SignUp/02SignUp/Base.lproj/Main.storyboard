@@ -69,7 +69,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="identifierField" destination="qJu-Gd-AAa" id="P3T-4b-yNj"/>
+                        <outlet property="idField" destination="qJu-Gd-AAa" id="P3T-4b-yNj"/>
                         <outlet property="passwordField" destination="qEs-Dz-kY6" id="5lM-Xo-bY9"/>
                         <outlet property="signUpButton" destination="mnY-qK-g3M" id="HuZ-pw-Ici"/>
                     </connections>
@@ -180,7 +180,7 @@
         <!--Additional Info View Controller-->
         <scene sceneID="Ba2-PT-Jpf">
             <objects>
-                <viewController storyboardIdentifier="AdditionalInfoView" id="tdI-hD-5KV" customClass="AdditionalInfoViewController" customModule="_2SignUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AdditionalInfoVC" id="tdI-hD-5KV" customClass="AdditionalInfoViewController" customModule="_2SignUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LL8-rq-91s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

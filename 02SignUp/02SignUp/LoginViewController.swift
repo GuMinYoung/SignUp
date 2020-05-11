@@ -10,14 +10,14 @@ import UIKit
 
 class LoginViewController: UIViewController {
     // MARK:- IBOutlets
-    @IBOutlet weak var identifierField: UITextField?
+    @IBOutlet weak var idField: UITextField?
     @IBOutlet weak var passwordField: UITextField?
     @IBOutlet weak var signUpButton: UIButton?
     
     // MARK:- Methods
     // MARK: Life Cycle
     override func viewWillAppear(_ animated: Bool) {
-        identifierField?.text = UserInformation.shared.id
+        idField?.text = UserInformation.shared.id
     }
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         signUpButton?.addTarget(self, action: #selector(touchUpSignUpButton), for: .touchUpInside)
     }
     
-    // MARK: IBActions
+    // MARK: Action Method
     @objc func touchUpSignUpButton(_ sender: UIButton) {
         UserInformation.shared.reset()
         
