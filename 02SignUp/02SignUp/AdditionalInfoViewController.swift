@@ -29,7 +29,7 @@ class AdditionalInfoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         initBirthDate()
         initPhoneNumber()
-        // UserInformation에 저장된 데이터가 있으면 가져와서 채움
+        signUpButton?.isEnabled = checkUserInfo()
     }
     
     override func viewDidLoad() {
@@ -41,7 +41,6 @@ class AdditionalInfoViewController: UIViewController {
     
     // MARK: Action Method
     @objc func pickerValueChanged(_ sender: UIDatePicker) {
-        //initBirthDate()
         birthLabel?.text = dateFormatter.string(from: sender.date)
         isValidDate = true
         signUpButton?.isEnabled = checkUserInfo()
@@ -102,6 +101,7 @@ class AdditionalInfoViewController: UIViewController {
         }
         datePicker?.date = birthDate
         birthLabel?.text = dateFormatter.string(from: birthDate)
+        isValidDate = true
     }
     
     func checkUserInfo() -> Bool {
