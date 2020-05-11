@@ -42,7 +42,6 @@ class BasicInfoViewController: UIViewController {
     }
     
     @objc func touchUpCancelButton(_ sender: UIButton) {
-
         self.dismiss(animated: true, completion: nil)
         UserInformation.shared.reset()
     }
@@ -65,6 +64,11 @@ class BasicInfoViewController: UIViewController {
     
     @objc func editingDidEnd(_ sender: UITextField) {
         doneButton?.isEnabled = checkUserInfo()
+    }
+    
+    // MARK: Override Method
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // MARK: Custom Method

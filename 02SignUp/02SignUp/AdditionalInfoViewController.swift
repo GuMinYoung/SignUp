@@ -39,7 +39,36 @@ class AdditionalInfoViewController: UIViewController {
         initFieldKeyboardType()
     }
     
-    // MARK: Overrided Method
+    // MARK: Action Method
+    @objc func pickerValueChanged(_ sender: UIDatePicker) {
+        //initBirthDate()
+        birthLabel?.text = dateFormatter.string(from: sender.date)
+        isValidDate = true
+        signUpButton?.isEnabled = checkUserInfo()
+    }
+    
+    @objc func touchUpCancelButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        UserInformation.shared.reset()
+    }
+
+    @objc func touchUpBackButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+        UserInformation.shared.phoneNumber = phoneNumberField?.text
+        UserInformation.shared.birthDate = datePicker?.date
+    }
+    
+    @objc func touchUpSignUpButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        UserInformation.shared.phoneNumber = phoneNumberField?.text
+        UserInformation.shared.birthDate = datePicker?.date
+    }
+    
+    @objc func editingDidChanged(_ sender: UITextField) {
+        signUpButton?.isEnabled = checkUserInfo()
+    }
+    
+    // MARK: Override Method
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
           self.view.endEditing(true)
     }
@@ -79,34 +108,5 @@ class AdditionalInfoViewController: UIViewController {
         guard phoneNumberField?.text != "", isValidDate
             else {return false}
         return true
-    }
-    
-    // MARK: Action Method
-    @objc func pickerValueChanged(_ sender: UIDatePicker) {
-        //initBirthDate()
-        birthLabel?.text = dateFormatter.string(from: sender.date)
-        isValidDate = true
-        signUpButton?.isEnabled = checkUserInfo()
-    }
-    
-    @objc func touchUpCancelButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-        UserInformation.shared.reset()
-    }
-
-    @objc func touchUpBackButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-        UserInformation.shared.phoneNumber = phoneNumberField?.text
-        UserInformation.shared.birthDate = datePicker?.date
-    }
-    
-    @objc func touchUpSignUpButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-        UserInformation.shared.phoneNumber = phoneNumberField?.text
-        UserInformation.shared.birthDate = datePicker?.date
-    }
-    
-    @objc func editingDidChanged(_ sender: UITextField) {
-        signUpButton?.isEnabled = checkUserInfo()
     }
 }
