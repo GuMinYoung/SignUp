@@ -105,8 +105,13 @@ class AdditionalInfoViewController: UIViewController {
     }
     
     func checkUserInfo() -> Bool {
-        guard phoneNumberField?.text != "", isValidDate
-            else {return false}
+        // MARK:- *코드리뷰
+        // 여러 조건을 나열하여 조건문을 사용할 때는 조건 별로 줄바꿈을 하는 것이 어떨까요?
+        guard phoneNumberField?.text != "",
+            isValidDate else {
+                return false
+        }
+        
         return true
     }
 }
